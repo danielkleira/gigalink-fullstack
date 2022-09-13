@@ -1,3 +1,8 @@
 from django.db import models
 
-# Create your models here.
+class Telefone(models.Model):
+    id = models.AutoField(primary_key=True)
+    ddd = models.CharField(max_length=255)
+    numero = models.CharField(max_length=255)
+    referencia = models.CharField(max_length=255)
+    fornecedor = models.OneToOneField("fornecedor.Fornecedor", on_delete=models.CASCADE, related_name="telefone", null=False)
