@@ -5,4 +5,4 @@ class Telefone(models.Model):
     ddd = models.CharField(max_length=255)
     numero = models.CharField(max_length=255)
     referencia = models.CharField(max_length=255)
-    fornecedor = models.OneToOneField("fornecedor.Fornecedor", on_delete=models.CASCADE, related_name="telefone", null=False)
+    fornecedor = models.ForeignKey("fornecedor.Fornecedor", on_delete=models.CASCADE, related_name="telefone_fornecedor")

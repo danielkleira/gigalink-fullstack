@@ -16,7 +16,9 @@ class ListCreateEmailView(generics.ListCreateAPIView):
         fornecedor = get_object_or_404(Fornecedor, id=fornecedor_id)
         serializer.save(fornecedor = fornecedor)
         
-    
+    def get_queryset(self):
+        fornecedor_id = self.kwargs[self.lookup_url_kwarg]
+        return Emails.objects.filter(fornecedor_id=fornecedor_id)
     
 class ListUpdateDeleteEmailByID(generics.RetrieveUpdateDestroyAPIView):
     queryset= Emails.objects.all()

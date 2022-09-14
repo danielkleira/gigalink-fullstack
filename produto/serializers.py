@@ -3,6 +3,7 @@ from fornecedor.serializers import FornecedorSerializer
 from rest_framework.serializers import ModelSerializer
 
 
+
 class ProdutoSerializer(ModelSerializer):
     fornecedor = FornecedorSerializer(read_only=True)
     
@@ -10,4 +11,4 @@ class ProdutoSerializer(ModelSerializer):
         model= Produto
         fields='__all__'
         read_only_fields = ["fornecedor"]
-        depth = 1
+    

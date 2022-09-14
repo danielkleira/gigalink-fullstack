@@ -3,20 +3,22 @@ from .models import Item
 from .serializers import ItemSerializer
 from pedido.models import Pedido
 from produto.models import Produto
-
+from django.shortcuts import get_object_or_404
 
 class ListCreateItemView(generics.ListCreateAPIView):
     queryset= Item.objects.all()
     serializer_class = ItemSerializer
+    lookup_url_kwarg = "produto_id"
     
     def perform_create(self, serializer):
+        
         produto_id = self.kwargs[self.lookup_url_kwarg]
-        pedido_id = self.kwargs[self.lookup_url_kwarg]
-        
         produto = get_object_or_404(Produto, id=produto_id)
-        pedido = get_object_or_404(Pedido, id=pedido_id)
+        serializer.save(produtos = produto)
         
-        serializer.save(produto = produto, pedido = pedido)
+    def get_queryset(self):
+        produto_id = self.kwargs[self.lookup_url_kwarg]
+        return Item.objects.filter(id=produto_id)
     
     
 class ListUpdateDeleteItemByID(generics.RetrieveUpdateDestroyAPIView):
