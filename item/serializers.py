@@ -9,9 +9,15 @@ class ItemSerializer(ModelSerializer):
     class Meta:
         model= Item
         fields='__all__'
-        read_only_fields = ["pedidos","produtos",'id']
-        write_only_fields = ['pedidos','produtos','id']
+        read_only_fields = ["pedidos","produtos"]
         
     def create(self, validated_data):
         prod = Item.objects.create(**validated_data)
         return prod
+    
+    
+class ItemIDSerializer(ModelSerializer):
+    
+    class Meta:
+        model= Item
+        fields=['id']

@@ -8,15 +8,16 @@ from item.models import Item
 class ListCreatePedidoView(generics.ListCreateAPIView):
     queryset= Pedido.objects.all()
     serializer_class = PedidoSerializer
-    lookup_url_kwarg= "transportadora_id"
+    lookup_url_kwarg = "transportadora_id"
     
     def perform_create(self, serializer):
-        transportadora_id = self.kwargs[self.lookup_url_kwarg]
+        transportadora_id = self.kwargs[self.lookup_url_kwarg]        
         transportadora = get_object_or_404(Transportadora, id=transportadora_id)
-        item_id = self.kwargs[self.lookup_url_kwarg]
-        item = get_object_or_404(Item, id=item_id)
-        serializer.save(transportadora = transportadora, pedidos_id=item)
-        
+        serializer.save(transportadora = transportadora)
+    
+    def get_queryset(self):
+        transportadora_id = self.kwargs[self.lookup_url_kwarg]
+        return Pedido.objects.filter(transportadora_id=transportadora_id)
     
     
 class ListUpdateDeletePedidoByID(generics.RetrieveUpdateDestroyAPIView):
