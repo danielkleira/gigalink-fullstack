@@ -13,12 +13,13 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 import os
 import dotenv
+import django_on_heroku
 
 dotenv.load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+django_on_heroku.settings(locals())
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -101,7 +102,7 @@ else:
 				        "NAME": os.getenv("POSTGRES_DB"),
 				        "USER": os.getenv("POSTGRES_USER"),
 				        "PASSWORD": os.getenv("POSTGRES_PASSWORD"),
-				        "HOST": "127.0.0.1",
+				        "HOST": "db",
 				        "PORT": 5432,
 				    }
     }
