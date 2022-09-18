@@ -12,11 +12,12 @@ class PedidoSerializer(ModelSerializer):
     itens = ItemIDSerializer(many=True)
     class Meta:
         model= Pedido
-        fields=['id','nota_fiscal','valor_frete','desconto','valor_total','transportadora','itens']
-        
+        fields=['id','nota_fiscal','valor_frete','desconto','transportadora','itens','valor_total']
+        read_only_fields = ['valor_total']
         extra_kwargs={'valor_frete':{'min_value':0},
                       'desconto':{'min_value':0},
-                      'valor_total':{'min_value':0}}
+                      }
+        
         
     def create(self, validated_data):
         item_data= validated_data.pop('itens')
@@ -28,7 +29,7 @@ class PedidoSerializer(ModelSerializer):
             numeros= list(item.items())
             instance_item = Item.objects.filter(id=numeros[0][1].pk)
             valores =list(instance_item)
-            valor_total += (float(valores[0].valor) * valores[0].quantidade)
+            valor_total += float(valores[0].valor) 
         
         valor_total = valor_total - float(desconto) + float(valor_frete)
         pedido_criado = Pedido.objects.create(**validated_data, valor_total=valor_total, valor_frete=valor_frete, desconto=desconto)
@@ -52,7 +53,7 @@ class PedidoSerializer(ModelSerializer):
             numeros= list(item.items())
             instance_item = Item.objects.filter(id=numeros[0][1].pk)
             valores =list(instance_item)
-            valor_total += (float(valores[0].valor) * valores[0].quantidade) 
+            valor_total += float(valores[0].valor)
         desconto = validated_data.pop('desconto')
         valor_frete= validated_data.pop('valor_frete')
         valor_total =valor_total - float(desconto) + float(valor_frete)

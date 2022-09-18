@@ -20,6 +20,9 @@ class ListCreateItemView(generics.ListCreateAPIView):
         produto_id = self.kwargs[self.lookup_url_kwarg]
         return Item.objects.filter(id=produto_id)
     
+class ListItemView(generics.ListAPIView):
+    queryset= Item.objects.all()
+    serializer_class = ItemSerializer
     
 class ListUpdateDeleteItemByID(generics.RetrieveUpdateDestroyAPIView):
     queryset= Item.objects.all()

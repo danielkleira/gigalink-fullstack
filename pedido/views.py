@@ -19,7 +19,10 @@ class ListCreatePedidoView(generics.ListCreateAPIView):
         transportadora_id = self.kwargs[self.lookup_url_kwarg]
         return Pedido.objects.filter(transportadora_id=transportadora_id)
     
-    
+class ListPedidoView(generics.ListAPIView):
+    queryset= Pedido.objects.all()
+    serializer_class = PedidoSerializer
+
 class ListUpdateDeletePedidoByID(generics.RetrieveUpdateDestroyAPIView):
     queryset= Pedido.objects.all()
     serializer_class = PedidoSerializer
