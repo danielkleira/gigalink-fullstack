@@ -1,26 +1,23 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  font-size: 20px;
+  font-family: var(--body-font);
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: var(--background-color);
-  height: 100vh;
+  text-align: center;
+  justify-content: center;
+  background-color: var(--header-background);
   color: var(--text-color);
-
-  .header {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 45px;
-    margin-left: 25px;
-    margin-right: 25px;
-    width: 80vw;
-    font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 5vh;
+  padding: 5px;
+  gap: 15px;
+  max-height: 85vh;
+  p{
+    font-size:10px;
+    color: var(--error-message);
   }
-
-  .botaoModal {
+  button {
     background-color: var(--button-background);
     color: var(--text-color);
     :hover {
@@ -30,6 +27,8 @@ export const Container = styled.div`
     }
   }
 
-
- 
+  .telefone {
+    display: flex;
+    flex-direction: column;
+  }
 `;

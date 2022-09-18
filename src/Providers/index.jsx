@@ -4,6 +4,8 @@ import { PedidosProvider } from "./Pedidos";
 import { ItensProvider } from "./Itens";
 import { FornecedoresProvider } from "./Fornecedores";
 import { BodyProvider } from "./Body";
+import { TelefonesProvider } from "./Telefones";
+import { EmailsProvider } from "./Emails";
 
 const Providers = ({ children }) => {
   return (
@@ -12,7 +14,11 @@ const Providers = ({ children }) => {
         <PedidosProvider>
           <FornecedoresProvider>
             <ItensProvider>
-              <BodyProvider>{children}</BodyProvider>
+              <TelefonesProvider>
+                <EmailsProvider>
+                  <BodyProvider>{children}</BodyProvider>
+                </EmailsProvider>
+              </TelefonesProvider>
             </ItensProvider>
           </FornecedoresProvider>
         </PedidosProvider>

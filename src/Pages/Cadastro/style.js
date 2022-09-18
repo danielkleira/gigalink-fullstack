@@ -15,10 +15,23 @@ export const Container = styled.div`
 
   .main {
     width: 50vw;
+    @media (max-width: 1200px) {
+      width: 60vw;
+    }
+    @media (max-width: 850px) {
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
   }
 
   img {
     width: 40vw;
+    @media (max-width: 850px) {
+      display: none;
+    }
   }
 
   h1 {
@@ -54,11 +67,11 @@ export const Container = styled.div`
     border-radius: 4px;
     padding: 42px 22px 42px 22px;
     @media (max-width: 650px) {
-      max-width: 80vw;
+      max-width: 80%;
     }
 
     @media (max-width: 850px) {
-      max-width: 70vw;
+      max-width: 70%;
     }
   }
 
@@ -68,6 +81,13 @@ export const Container = styled.div`
     align-items: center;
     max-width: 35vw;
     margin: none;
+    @media (max-width: 1000px) {
+      max-width: 40vw;
+    }
+
+    @media (max-width: 850px) {
+      max-width: 80vw;
+    }
 
     button {
       background: var(--button-background);

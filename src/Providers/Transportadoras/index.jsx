@@ -22,17 +22,16 @@ export const TransportadorasProvider = ({ children }) => {
     api
       .get(`transportadoras/`)
       .then((response) => {
-        setTransportadoras(response);
-        toast.success("Transportadora listada");
+        setTransportadoras(response.data);
       })
       .catch((err) => {
         toast.error("Algo deu errado");
       });
   }
 
-  const atualizaTransportadora = (transportadora_id) => {
+  const atualizaTransportadora = (transportadora_id, data) => {
     api
-      .post(`transportadoras/${transportadora_id}/`)
+      .patch(`transportadoras/${transportadora_id}/`, data)
       .then((response) => {
         toast.success("Transportadora atualizada");
       })
@@ -43,7 +42,7 @@ export const TransportadorasProvider = ({ children }) => {
 
   const deletaTransportadora = (transportadora_id) => {
     api
-      .post(`transportadoras/${transportadora_id}/`)
+      .delete(`transportadoras/${transportadora_id}/`)
       .then((response) => {
         toast.success("Transportadora deletada");
       })

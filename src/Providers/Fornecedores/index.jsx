@@ -20,20 +20,14 @@ export const FornecedoresProvider = ({ children }) => {
   };
 
   const listaTodosFornecedores = () => {
-    api
-      .get(`fornecedor/`)
-      .then((response) => {
-        setFornecedores(response.data);
-        toast.success("Fornecedor listado");
-      })
-      .catch((err) => {
-        toast.error("Algo deu errado");
-      });
+    api.get(`fornecedor/`).then((response) => {
+      setFornecedores(response.data);
+    });
   };
 
-  const atualizaFornecedor = (id) => {
+  const atualizaFornecedor = (id, data) => {
     api
-      .post(`fornecedor/${id}/`)
+      .patch(`fornecedor/${id}/`, data)
       .then((response) => {
         toast.success("Fornecedor atualizado");
       })
@@ -44,7 +38,7 @@ export const FornecedoresProvider = ({ children }) => {
 
   const deletaFornecedor = (id) => {
     api
-      .post(`fornecedor/${id}/`)
+      .delete(`fornecedor/${id}/`)
       .then((response) => {
         toast.success("Fornecedor deletado");
       })

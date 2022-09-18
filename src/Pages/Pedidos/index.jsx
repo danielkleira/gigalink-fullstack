@@ -14,7 +14,7 @@ const Pedidos = () => {
 
   return (
     <>
-      <Container></Container>
+      <Container>Pedidos</Container>
     </>
   );
 };

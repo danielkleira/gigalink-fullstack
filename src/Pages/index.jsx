@@ -4,6 +4,7 @@ import { BodyContext } from "../Providers/Body";
 import Fornecedores from "./Fornecedores";
 import Itens from "./Itens";
 import Pedidos from "./Pedidos";
+import Produtos from "./Produtos";
 import Transportadoras from "./Transportadoras";
 
 const Body = () => {
@@ -11,7 +12,6 @@ const Body = () => {
 
   return (
     <>
-    
       <Header />
       {tab === "fornecedores" ? (
         <Fornecedores />
@@ -21,6 +21,8 @@ const Body = () => {
         <Pedidos />
       ) : tab === "transportadoras" ? (
         <Transportadoras />
+      ) : tab === "produtos" ? (
+        <Produtos />
       ) : (
         <Fornecedores />
       )}
