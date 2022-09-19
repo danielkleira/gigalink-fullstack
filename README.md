@@ -80,7 +80,7 @@ pip install requirements.txt
 # Rode o servidor:
 
 ```cl
-/manage.py runserver
+/manage.py runserver ou docker-compose up
 ```
 
 Assim o servidor estara rodando e pode ser testado.
