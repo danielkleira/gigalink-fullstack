@@ -91,7 +91,7 @@ Assim o servidor estara rodando e pode ser testado.
 [![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=Gigalink-Daniel-Leira&uri=https%3A%2F%2Fraw.githubusercontent.com%2Fdanielkleira%2FinsomniaGigalink%2Fmain%2FInsomnia_gigalink.json%3Ftoken%3DGHSAT0AAAAAABQH46JFQCCRAMO7L7CF2M74YZHXVHQ)
 
 ## Ou acessando a documentação schema gerada pelo drf-Spectacular
-```cl http://localhost:8000/api/doc/```
+``` http://localhost:8000/api/doc/ ```
 
 ## :memo: Licença
 
