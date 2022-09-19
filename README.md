@@ -80,14 +80,18 @@ pip install requirements.txt
 # Rode o servidor:
 
 ```cl
-/manage.py runserver
+/manage.py runserver ou docker-compose up
 ```
 
 Assim o servidor estara rodando e pode ser testado.
 
-## Caso prefira, pode baixar meu workspace do insominia para testar os endpoints:
+## Opções de testagem: 
 
+## Caso prefira, pode baixar meu workspace do insominia para testar os endpoints:
 [![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=Gigalink-Daniel-Leira&uri=https%3A%2F%2Fraw.githubusercontent.com%2Fdanielkleira%2FinsomniaGigalink%2Fmain%2FInsomnia_gigalink.json%3Ftoken%3DGHSAT0AAAAAABQH46JFQCCRAMO7L7CF2M74YZHXVHQ)
+
+## Ou acessando a documentação schema gerada pelo drf-Spectacular
+``` http://localhost:8000/api/doc/ ```
 
 ## :memo: Licença
 
