@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'pedido',
     'produto',
     'telefone',
-    'transportadora'
+    'transportadora',
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -149,3 +150,15 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 django_on_heroku.settings(locals())
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Gigalink',
+    'DESCRIPTION': 'Gigalink Fullstack é uma aplicação baseada em um gerenciador de vendas de produtos, boa parte de seu Frontend foi desenvolvido com a biblioteca MaterialUI pensando em agilidade, escalabilidade e responsividade.',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    # OTHER SETTINGS
+}

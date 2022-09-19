@@ -1,0 +1,1536 @@
+openapi: 3.0.3
+info:
+  title: Gigalink
+  version: 1.0.0
+  description: Gigalink Fullstack é uma aplicação baseada em um gerenciador de vendas
+    de produtos, boa parte de seu Frontend foi desenvolvido com a biblioteca MaterialUI
+    pensando em agilidade, escalabilidade e responsividade.
+paths:
+  /api/email/{fornecedor_id}/:
+    get:
+      operationId: api_email_list
+      parameters:
+      - in: path
+        name: fornecedor_id
+        schema:
+          type: integer
+        description: A unique integer value identifying this emails.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Email'
+          description: ''
+    post:
+      operationId: api_email_create
+      parameters:
+      - in: path
+        name: fornecedor_id
+        schema:
+          type: integer
+        description: A unique integer value identifying this emails.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Email'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Email'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Email'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Email'
+          description: ''
+  /api/email/{fornecedor_id}/{email_id}/:
+    get:
+      operationId: api_email_retrieve
+      parameters:
+      - in: path
+        name: email_id
+        schema:
+          type: integer
+        description: A unique integer value identifying this emails.
+        required: true
+      - in: path
+        name: fornecedor_id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Email'
+          description: ''
+    put:
+      operationId: api_email_update
+      parameters:
+      - in: path
+        name: email_id
+        schema:
+          type: integer
+        description: A unique integer value identifying this emails.
+        required: true
+      - in: path
+        name: fornecedor_id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Email'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Email'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Email'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Email'
+          description: ''
+    patch:
+      operationId: api_email_partial_update
+      parameters:
+      - in: path
+        name: email_id
+        schema:
+          type: integer
+        description: A unique integer value identifying this emails.
+        required: true
+      - in: path
+        name: fornecedor_id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedEmail'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedEmail'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedEmail'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Email'
+          description: ''
+    delete:
+      operationId: api_email_destroy
+      parameters:
+      - in: path
+        name: email_id
+        schema:
+          type: integer
+        description: A unique integer value identifying this emails.
+        required: true
+      - in: path
+        name: fornecedor_id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/fornecedor/:
+    get:
+      operationId: api_fornecedor_list
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Fornecedor'
+          description: ''
+    post:
+      operationId: api_fornecedor_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Fornecedor'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Fornecedor'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Fornecedor'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fornecedor'
+          description: ''
+  /api/fornecedor/{fornecedor_id}/:
+    get:
+      operationId: api_fornecedor_retrieve
+      parameters:
+      - in: path
+        name: fornecedor_id
+        schema:
+          type: integer
+        description: A unique integer value identifying this fornecedor.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fornecedor'
+          description: ''
+    put:
+      operationId: api_fornecedor_update
+      parameters:
+      - in: path
+        name: fornecedor_id
+        schema:
+          type: integer
+        description: A unique integer value identifying this fornecedor.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Fornecedor'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Fornecedor'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Fornecedor'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fornecedor'
+          description: ''
+    patch:
+      operationId: api_fornecedor_partial_update
+      parameters:
+      - in: path
+        name: fornecedor_id
+        schema:
+          type: integer
+        description: A unique integer value identifying this fornecedor.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedFornecedor'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedFornecedor'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedFornecedor'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fornecedor'
+          description: ''
+    delete:
+      operationId: api_fornecedor_destroy
+      parameters:
+      - in: path
+        name: fornecedor_id
+        schema:
+          type: integer
+        description: A unique integer value identifying this fornecedor.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/fornecedor/{fornecedor_id}/produto/:
+    get:
+      operationId: api_fornecedor_produto_list
+      parameters:
+      - in: path
+        name: fornecedor_id
+        schema:
+          type: integer
+        description: A unique integer value identifying this produto.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Produto'
+          description: ''
+    post:
+      operationId: api_fornecedor_produto_create
+      parameters:
+      - in: path
+        name: fornecedor_id
+        schema:
+          type: integer
+        description: A unique integer value identifying this produto.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Produto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Produto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Produto'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Produto'
+          description: ''
+  /api/item/:
+    get:
+      operationId: api_item_list
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Item'
+          description: ''
+  /api/item/{item_id}/:
+    get:
+      operationId: api_item_retrieve
+      parameters:
+      - in: path
+        name: item_id
+        schema:
+          type: integer
+        description: A unique integer value identifying this item.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+          description: ''
+    put:
+      operationId: api_item_update
+      parameters:
+      - in: path
+        name: item_id
+        schema:
+          type: integer
+        description: A unique integer value identifying this item.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Item'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Item'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Item'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+          description: ''
+    patch:
+      operationId: api_item_partial_update
+      parameters:
+      - in: path
+        name: item_id
+        schema:
+          type: integer
+        description: A unique integer value identifying this item.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedItem'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedItem'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedItem'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+          description: ''
+    delete:
+      operationId: api_item_destroy
+      parameters:
+      - in: path
+        name: item_id
+        schema:
+          type: integer
+        description: A unique integer value identifying this item.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/pedidos/{pedido_id}/:
+    get:
+      operationId: api_pedidos_retrieve
+      parameters:
+      - in: path
+        name: pedido_id
+        schema:
+          type: integer
+        description: A unique integer value identifying this pedido.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pedido'
+          description: ''
+    put:
+      operationId: api_pedidos_update
+      parameters:
+      - in: path
+        name: pedido_id
+        schema:
+          type: integer
+        description: A unique integer value identifying this pedido.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pedido'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Pedido'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Pedido'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pedido'
+          description: ''
+    patch:
+      operationId: api_pedidos_partial_update
+      parameters:
+      - in: path
+        name: pedido_id
+        schema:
+          type: integer
+        description: A unique integer value identifying this pedido.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedPedido'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedPedido'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedPedido'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pedido'
+          description: ''
+    delete:
+      operationId: api_pedidos_destroy
+      parameters:
+      - in: path
+        name: pedido_id
+        schema:
+          type: integer
+        description: A unique integer value identifying this pedido.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/produto/{produto_id}/:
+    get:
+      operationId: api_produto_retrieve
+      parameters:
+      - in: path
+        name: produto_id
+        schema:
+          type: integer
+        description: A unique integer value identifying this produto.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Produto'
+          description: ''
+    put:
+      operationId: api_produto_update
+      parameters:
+      - in: path
+        name: produto_id
+        schema:
+          type: integer
+        description: A unique integer value identifying this produto.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Produto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Produto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Produto'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Produto'
+          description: ''
+    patch:
+      operationId: api_produto_partial_update
+      parameters:
+      - in: path
+        name: produto_id
+        schema:
+          type: integer
+        description: A unique integer value identifying this produto.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedProduto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedProduto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedProduto'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Produto'
+          description: ''
+    delete:
+      operationId: api_produto_destroy
+      parameters:
+      - in: path
+        name: produto_id
+        schema:
+          type: integer
+        description: A unique integer value identifying this produto.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/produto/{produto_id}/item/:
+    get:
+      operationId: api_produto_item_list
+      parameters:
+      - in: path
+        name: produto_id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Item'
+          description: ''
+    post:
+      operationId: api_produto_item_create
+      parameters:
+      - in: path
+        name: produto_id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Item'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Item'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Item'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+          description: ''
+  /api/telefone/{fornecedor_id}/list/:
+    get:
+      operationId: api_telefone_list_list
+      parameters:
+      - in: path
+        name: fornecedor_id
+        schema:
+          type: integer
+        description: A unique integer value identifying this telefone.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Telefone'
+          description: ''
+    post:
+      operationId: api_telefone_list_create
+      parameters:
+      - in: path
+        name: fornecedor_id
+        schema:
+          type: integer
+        description: A unique integer value identifying this telefone.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Telefone'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Telefone'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Telefone'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Telefone'
+          description: ''
+  /api/telefone/{telefone_id}/:
+    get:
+      operationId: api_telefone_retrieve
+      parameters:
+      - in: path
+        name: telefone_id
+        schema:
+          type: integer
+        description: A unique integer value identifying this telefone.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Telefone'
+          description: ''
+    put:
+      operationId: api_telefone_update
+      parameters:
+      - in: path
+        name: telefone_id
+        schema:
+          type: integer
+        description: A unique integer value identifying this telefone.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Telefone'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Telefone'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Telefone'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Telefone'
+          description: ''
+    patch:
+      operationId: api_telefone_partial_update
+      parameters:
+      - in: path
+        name: telefone_id
+        schema:
+          type: integer
+        description: A unique integer value identifying this telefone.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedTelefone'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedTelefone'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedTelefone'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Telefone'
+          description: ''
+    delete:
+      operationId: api_telefone_destroy
+      parameters:
+      - in: path
+        name: telefone_id
+        schema:
+          type: integer
+        description: A unique integer value identifying this telefone.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/transportadora/pedidos/:
+    get:
+      operationId: api_transportadora_pedidos_list
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Pedido'
+          description: ''
+  /api/transportadora/pedidos/{transportadora_id}/:
+    get:
+      operationId: api_transportadora_pedidos_list_2
+      parameters:
+      - in: path
+        name: transportadora_id
+        schema:
+          type: integer
+        description: A unique integer value identifying this pedido.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Pedido'
+          description: ''
+    post:
+      operationId: api_transportadora_pedidos_create
+      parameters:
+      - in: path
+        name: transportadora_id
+        schema:
+          type: integer
+        description: A unique integer value identifying this pedido.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pedido'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Pedido'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Pedido'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pedido'
+          description: ''
+  /api/transportadoras/:
+    get:
+      operationId: api_transportadoras_list
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Transportadora'
+          description: ''
+    post:
+      operationId: api_transportadoras_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Transportadora'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Transportadora'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Transportadora'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transportadora'
+          description: ''
+  /api/transportadoras/{transportadora_id}/:
+    get:
+      operationId: api_transportadoras_retrieve
+      parameters:
+      - in: path
+        name: transportadora_id
+        schema:
+          type: integer
+        description: A unique integer value identifying this transportadora.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transportadora'
+          description: ''
+    put:
+      operationId: api_transportadoras_update
+      parameters:
+      - in: path
+        name: transportadora_id
+        schema:
+          type: integer
+        description: A unique integer value identifying this transportadora.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Transportadora'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Transportadora'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Transportadora'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transportadora'
+          description: ''
+    patch:
+      operationId: api_transportadoras_partial_update
+      parameters:
+      - in: path
+        name: transportadora_id
+        schema:
+          type: integer
+        description: A unique integer value identifying this transportadora.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedTransportadora'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedTransportadora'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedTransportadora'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transportadora'
+          description: ''
+    delete:
+      operationId: api_transportadoras_destroy
+      parameters:
+      - in: path
+        name: transportadora_id
+        schema:
+          type: integer
+        description: A unique integer value identifying this transportadora.
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+components:
+  schemas:
+    Email:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        fornecedor:
+          allOf:
+          - $ref: '#/components/schemas/Fornecedor'
+          readOnly: true
+        email:
+          type: string
+          maxLength: 255
+        referencia:
+          type: string
+          maxLength: 255
+      required:
+      - email
+      - fornecedor
+      - id
+      - referencia
+    Fornecedor:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        telefone:
+          type: array
+          items:
+            $ref: '#/components/schemas/Telefone'
+        nome:
+          type: string
+          maxLength: 255
+        descricao:
+          type: string
+          maxLength: 255
+        cidade:
+          type: string
+          maxLength: 255
+        endereco:
+          type: string
+          maxLength: 255
+        bairro:
+          type: string
+          maxLength: 255
+        numero:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+      required:
+      - bairro
+      - cidade
+      - descricao
+      - endereco
+      - id
+      - nome
+      - numero
+      - telefone
+    Item:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        produtos:
+          allOf:
+          - $ref: '#/components/schemas/Produto'
+          readOnly: true
+        quantidade:
+          type: number
+          format: double
+        valor:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        pedidos:
+          type: integer
+          nullable: true
+      required:
+      - id
+      - produtos
+      - quantidade
+      - valor
+    ItemID:
+      type: object
+      properties:
+        id:
+          type: integer
+      required:
+      - id
+    PatchedEmail:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        fornecedor:
+          allOf:
+          - $ref: '#/components/schemas/Fornecedor'
+          readOnly: true
+        email:
+          type: string
+          maxLength: 255
+        referencia:
+          type: string
+          maxLength: 255
+    PatchedFornecedor:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        telefone:
+          type: array
+          items:
+            $ref: '#/components/schemas/Telefone'
+        nome:
+          type: string
+          maxLength: 255
+        descricao:
+          type: string
+          maxLength: 255
+        cidade:
+          type: string
+          maxLength: 255
+        endereco:
+          type: string
+          maxLength: 255
+        bairro:
+          type: string
+          maxLength: 255
+        numero:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+    PatchedItem:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        produtos:
+          allOf:
+          - $ref: '#/components/schemas/Produto'
+          readOnly: true
+        quantidade:
+          type: number
+          format: double
+        valor:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        pedidos:
+          type: integer
+          nullable: true
+    PatchedPedido:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        nota_fiscal:
+          type: string
+          maxLength: 255
+        valor_frete:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        desconto:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        transportadora:
+          allOf:
+          - $ref: '#/components/schemas/Transportadora'
+          readOnly: true
+        itens:
+          type: array
+          items:
+            $ref: '#/components/schemas/ItemID'
+        valor_total:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+          readOnly: true
+    PatchedProduto:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        fornecedor:
+          allOf:
+          - $ref: '#/components/schemas/Fornecedor'
+          readOnly: true
+        nome:
+          type: string
+          maxLength: 255
+        descricao:
+          type: string
+          maxLength: 255
+    PatchedTelefone:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        ddd:
+          type: string
+          maxLength: 255
+        numero:
+          type: string
+          maxLength: 255
+        referencia:
+          type: string
+          maxLength: 255
+        fornecedor:
+          type: integer
+          readOnly: true
+    PatchedTransportadora:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        nome:
+          type: string
+          maxLength: 255
+    Pedido:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        nota_fiscal:
+          type: string
+          maxLength: 255
+        valor_frete:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        desconto:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        transportadora:
+          allOf:
+          - $ref: '#/components/schemas/Transportadora'
+          readOnly: true
+        itens:
+          type: array
+          items:
+            $ref: '#/components/schemas/ItemID'
+        valor_total:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+          readOnly: true
+      required:
+      - id
+      - itens
+      - nota_fiscal
+      - transportadora
+      - valor_frete
+      - valor_total
+    Produto:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        fornecedor:
+          allOf:
+          - $ref: '#/components/schemas/Fornecedor'
+          readOnly: true
+        nome:
+          type: string
+          maxLength: 255
+        descricao:
+          type: string
+          maxLength: 255
+      required:
+      - descricao
+      - fornecedor
+      - id
+      - nome
+    Telefone:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        ddd:
+          type: string
+          maxLength: 255
+        numero:
+          type: string
+          maxLength: 255
+        referencia:
+          type: string
+          maxLength: 255
+        fornecedor:
+          type: integer
+          readOnly: true
+      required:
+      - ddd
+      - fornecedor
+      - id
+      - numero
+      - referencia
+    Transportadora:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        nome:
+          type: string
+          maxLength: 255
+      required:
+      - id
+      - nome
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
