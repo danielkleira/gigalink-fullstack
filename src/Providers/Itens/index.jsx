@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useState, } from "react";
 import { toast } from "react-toastify";
 import { api } from "../../Services/api";
 
@@ -7,34 +7,28 @@ export const ItensContext = createContext({});
 export const ItensProvider = ({ children }) => {
   const [itens, setItens] = useState([]);
 
-  const adicionarItem = (produto_id, data) => {
+  const adicionarItem = (produtoId, data) => {
     api
-      .post(`produto/${produto_id}/item/`, data)
+      .post(`produto/${produtoId}/item/`, data)
       .then((response) => {
         toast.success("item criado");
       })
       .catch((err) => {
         toast.error("Algo deu errado");
       });
-    listaTodosItens();
   };
 
-  function listaTodosItens(produto_id) {
+  const listaTodosItens = ()=> {
     api
-      .get(`produto/${produto_id}/`)
+      .get(`item/`)
       .then((response) => {
-        console.log(response);
-        setItens(response);
-        toast.success("Item listado");
+        setItens(response.data);        
       })
-      .catch((err) => {
-        toast.error("Algo deu errado");
-      });
   }
 
-  const atualizaItem = (item_id, data) => {
+  const atualizaItem = (itemId, data) => {
     api
-      .post(`item/${item_id}/`, data)
+      .patch(`item/${itemId}/`, data)
       .then((response) => {
         toast.success("Item atualizado");
       })
@@ -43,9 +37,9 @@ export const ItensProvider = ({ children }) => {
       });
   };
 
-  const deletaItem = (item_id) => {
+  const deletaItem = (itemId) => {
     api
-      .post(`item/${item_id}/`)
+      .delete(`item/${itemId}/`)
       .then((response) => {
         toast.success("Item deletado");
       })

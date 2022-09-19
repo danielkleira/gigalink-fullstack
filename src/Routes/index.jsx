@@ -14,7 +14,7 @@ const Routes = () => {
     <>
       <BrowserRouter>
         <Switch>
-          <Route exact path="/">
+          <Route exact path="/login">
             <Login
               authenticated={authenticated}
               setAuthenthicated={setAuthenthicated}
@@ -25,7 +25,7 @@ const Routes = () => {
             <Cadastro />
           </Route>
 
-          <Route exact path="/dashboard/">
+          <Route exact path="/">
             <Body
               authenticated={authenticated}
               setAuthenthicated={setAuthenthicated}

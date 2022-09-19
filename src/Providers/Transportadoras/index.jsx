@@ -15,7 +15,6 @@ export const TransportadorasProvider = ({ children }) => {
       .catch((err) => {
         toast.error("Algo deu errado");
       });
-    listaTodasTransportadoras();
   };
 
   function listaTodasTransportadoras() {
@@ -24,9 +23,7 @@ export const TransportadorasProvider = ({ children }) => {
       .then((response) => {
         setTransportadoras(response.data);
       })
-      .catch((err) => {
-        toast.error("Algo deu errado");
-      });
+      
   }
 
   const atualizaTransportadora = (transportadora_id, data) => {

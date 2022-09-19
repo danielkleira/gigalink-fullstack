@@ -16,15 +16,13 @@ export const PedidosProvider = ({ children }) => {
       .catch((err) => {
         toast.error("Algo deu errado");
       });
-    listaTodosPedidos();
   };
 
-  function listaTodosPedidos(transportadora_id) {
+  function listaTodosPedidos() {
     api
-      .get(`transportadora/pedidos/${transportadora_id}/`)
+      .get(`transportadora/pedidos/`)
       .then((response) => {
-        setPedidos(response);
-        toast.success("Pedido listado");
+        setPedidos(response.data);
       })
       .catch((err) => {
         toast.error("Algo deu errado");
@@ -33,7 +31,7 @@ export const PedidosProvider = ({ children }) => {
 
   const atualizaPedido = (pedido_id, data) => {
     api
-      .post(`pedidos/${pedido_id}/`, data)
+      .patch(`pedidos/${pedido_id}/`, data)
       .then((response) => {
         toast.success("Pedido atualizado");
       })
@@ -44,7 +42,7 @@ export const PedidosProvider = ({ children }) => {
 
   const deletaPedido = (pedido_id) => {
     api
-      .post(`pedidos/${pedido_id}/`)
+      .delete(`pedidos/${pedido_id}/`)
       .then((response) => {
         toast.success("Pedido deletado");
       })

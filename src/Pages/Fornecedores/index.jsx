@@ -76,7 +76,6 @@ const Fornecedores = () => {
   const { fornecedores, listaTodosFornecedores, deletaFornecedor } =
     useContext(FornecedoresContext);
 
-
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);

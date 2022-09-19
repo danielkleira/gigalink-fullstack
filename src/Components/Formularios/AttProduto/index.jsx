@@ -5,8 +5,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { ProdutosContext } from "../../../Providers/Produtos";
 import { useContext } from "react";
 
-const FormularioProduto = (idFornecedor) => {
-  const { adicionarProduto } = useContext(ProdutosContext);
+const FormularioAttProduto = (idFornecedor, { attClose }) => {
+  const { atualizaProduto } = useContext(ProdutosContext);
 
   const schema = yup.object().shape({
     nome: yup.string().required("Campo Obrigatório!"),
@@ -20,16 +20,16 @@ const FormularioProduto = (idFornecedor) => {
   } = useForm({ resolver: yupResolver(schema) });
 
   const submitFunction = (data) => {
-    console.log(idFornecedor)
     const infos = {
       nome: data.nome,
       descricao: data.descricao,
     };
-    adicionarProduto(idFornecedor.idFornecedor,infos);
+    atualizaProduto(idFornecedor.id, infos);
+    attClose();
   };
   return (
     <Container>
-      <header> Cadastro de produtos</header>
+      <header> Atualização de produtos</header>
       <form onSubmit={handleSubmit(submitFunction)}>
         <input
           label={"Nome"}
@@ -45,9 +45,9 @@ const FormularioProduto = (idFornecedor) => {
           placeholder="Descrição"
         />
         <p>{errors.descricao?.message}</p>
-        <button type="submit">Cadastrar produto</button>
+        <button type="submit">Atualizar produto</button>
       </form>
     </Container>
   );
 };
-export default FormularioProduto;
+export default FormularioAttProduto;
